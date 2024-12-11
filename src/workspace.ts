@@ -13,7 +13,7 @@ export class Workspace {
     try {
       core.debug(`collecting metadata for "${this.root}"`);
       const meta: Meta = JSON.parse(
-        await getCmdOutput("cargo", ["metadata", "--all-features", "--format-version", "1", ...extraArgs], {
+        await getCmdOutput("cargo", ["-Zgitoxide", "-Zgit", "metadata", "--all-features", "--format-version", "1", ...extraArgs], {
           cwd: this.root,
         }),
       );
